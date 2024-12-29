@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portopolio</title>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./be-express-js/app.js"></script>
+    <style>
+      /* Style untuk form */
+      form {
+        width: 400px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+  
+      /* Style untuk label */
+      form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+      }
+  
+      /* Style untuk input dan textarea */
+      form input[type="text"],
+      form input[type="email"],
+      form textarea {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+      }
+  
+      form input[type="text"]:focus,
+      form input[type="email"]:focus,
+      form textarea:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+      }
+    </style>
+</head>
+  <body> 
+    <div class="shape"></div>
+    <header>
+      <nav>
+        <h1>Riyan Prayoga</h1>
+        <div class="burger">
+          <i class="fa-solid fa-bars"></i> 
+        </div>
+        <ul class="links">
+          <li><a href="#about">about</a></li>
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="text">
+          <div class="grp">
+            <h2>Welcome to my profile</h2>
+            <h1>
+              Hi, I'm <span>Riyan Prayoga</span> <br />
+              A Front-End Developer
+            </h1>
+            <div class="icons">
+                <a href="https://github.com/prayoga475">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <div class="line"></div>
+                <a href="https://www.linkedin.com/in/r-prayoga-791421340/">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+          </div>
+        </div>
+        <div class="img">
+          <img src="./css/photo/my.png" alt="" />
+        </div>
+      </div>
+    </main>
+
+    <!-- about section  -->
+    <div class="about" id="about">
+      <div class="container">
+        <div class="text">
+          <h3>About</h3>
+          <h1>Get to know me</h1>
+          <p>
+           Seorang laki laki sejati tidak perlu bercerita tentang perjalanan hidupnya.
+          </p>
+        </div>
+        <div class="skills">
+          <h2>Skills</h2>
+          <div class="wrapper">
+            <div>
+              <i class="fa-brands fa-html5"></i>
+            </div>
+            <div>
+              <i class="fa-brands fa-css3-alt"></i>
+            </div>
+            <div>
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <div>
+              <i class="fa-brands fa-github"></i>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+    <!-- about section  -->
+
+    <!-- projects section -->
+    <div class="projects" id="projects">
+      <div class="container">
+        <div class="projects-wrapper">
+
+            <div class="projects" id="project">
+                <div class="container">
+                    <h3>Portofolio</h3>
+                    <h1 class="title">my Project</h1>
+                    <div class="project-wrapper">
+                        <div class="project">
+                            <div class="card">
+                                <div class="overview">
+                                    <h1>The Zero Production</h1>
+                                </div>
+                                <img src="./css/photo/project1.png" alt="project 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects" id="project">
+              <div class="container">
+                  <div class="project-wrapper">
+                      <div class="project">
+                          <div class="card">
+                              <div class="overview">
+                                  <h1>PS Only</h1>
+                              </div>
+                              <img src="./css/photo/project2.png" alt="project 2">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="projects" id="project">
+            <div class="container">
+                <div class="project-wrapper">
+                    <div class="project">
+                        <div class="card">
+                            <div class="overview">
+                                <h1>Coffe Array</h1>
+                            </div>
+                            <img src="./css/photo/project3.png" alt="project 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- projects section -->
+
+    <!-- contact  -->
+
+    <div class="contact" id="contact">
+        <div class="container">
+         
+          <div>
+            <h3>Contact</h3>
+            <form action="" method="POST">
+              <label for="name">Nama:</label>
+              <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+          
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+          
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="7" placeholder="Tulis pesan Anda" required></textarea>
+              <div class="tombol">
+              <button type="button" id="submitBtn" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- contact  -->
+    <a href="#" class="back-top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </body>
+  <script src="./app.js"></script>
+</html>
