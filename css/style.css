@@ -259,6 +259,12 @@ main .img img {
   font-size: 50px;
 }
 
+.about .Education h2 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 50px;
+}
+
 /* about section  */
 
 /* project section  */
