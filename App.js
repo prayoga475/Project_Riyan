@@ -22,75 +22,122 @@ document.querySelectorAll(".links li a").forEach(link => {
 });
 
 // Form handling
-class FormHandler {
-    constructor(formElement) {
-        this.form = formElement;
-        this.submitBtn = document.getElementById("submitBtn");
-        this.setupEventListeners();
-    }
+// class FormHandler {
+//     constructor(formElement) {
+//         this.form = formElement;
+//         this.submitBtn = document.getElementById("submitBtn");
+//         this.setupEventListeners();
+//     }
 
-    setupEventListeners() {
-        if (this.submitBtn) {
-            this.submitBtn.addEventListener("click", (e) => this.handleSubmit(e));
-        }
-    }
+//     setupEventListeners() {
+//         if (this.submitBtn) {
+//             this.submitBtn.addEventListener("click", (e) => this.handleSubmit(e));
+//         }
+//     }
 
-    validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+//     validateEmail(email) {
+//         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+//     }
 
-    validateForm(formData) {
-        const { name, email, message } = formData;
+//     validateForm(formData) {
+//         const { name, email, message } = formData;
         
+//         if (!name || !email || !message) {
+//             throw new Error("Please fill out all fields");
+//         }
+        
+//         if (!this.validateEmail(email)) {
+//             throw new Error("Please enter a valid email address");
+//         }
+        
+//         return true;
+//     }
+
+//     async sendData(formData) {
+//         const response = await fetch("https://project-riyan-back.vercel.app/api/books", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify(formData)
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`Failed to send message: ${response.statusText}`);
+//         }
+
+//         return response.json();
+//     }
+
+//     async handleSubmit(e) {
+//         e.preventDefault();
+        
+//         const formData = {
+//             name: document.getElementById("name")?.value?.trim(),
+//             email: document.getElementById("email")?.value?.trim(),
+//             message: document.getElementById("message")?.value?.trim()
+//         };
+
+//         try {
+//             this.validateForm(formData);
+//             await this.sendData(formData);
+//             alert("Message sent successfully!");
+//             this.form.reset();
+//         } catch (error) {
+//             alert(error.message);
+//             console.error("Error:", error);
+//         }
+//     }
+// }
+
+
+const submitBtn = document.getElementById('submitBtn');
+
+if (submitBtn) {
+    submitBtn.addEventListener('click', async function () {
+        const name = document.getElementById('name')?.value.trim();
+        const email = document.getElementById('email')?.value.trim();
+        const message = document.getElementById('message')?.value.trim();
+
         if (!name || !email || !message) {
-            throw new Error("Please fill out all fields");
-        }
-        
-        if (!this.validateEmail(email)) {
-            throw new Error("Please enter a valid email address");
-        }
-        
-        return true;
-    }
-
-    async sendData(formData) {
-        const response = await fetch("https://project-riyan-back.vercel.app/api/books", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        });
-
-        if (!response.ok) {
-            throw new Error(`Failed to send message: ${response.statusText}`);
+            alert('Please fill out all fields');
+            return;
         }
 
-        return response.json();
-    }
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
 
-    async handleSubmit(e) {
-        e.preventDefault();
-        
         const formData = {
-            name: document.getElementById("name")?.value?.trim(),
-            email: document.getElementById("email")?.value?.trim(),
-            message: document.getElementById("message")?.value?.trim()
+            name: name,
+            email: email,
+            message: message,
         };
 
         try {
-            this.validateForm(formData);
-            await this.sendData(formData);
-            alert("Message sent successfully!");
-            this.form.reset();
-        } catch (error) {
-            alert(error.message);
-            console.error("Error:", error);
-        }
-    }
-}
+            const response = await fetch('https://project-riyan-back.vercel.app/api/books', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
 
-// Initialize form handler
-if (form) {
-    new FormHandler(form);
+            if (!response.ok) {
+                throw new Error(`Failed to send message: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('Success:', data);
+            alert('Message sent successfully!');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error sending message. Please try again later.');
+        }
+    });
+} else {
+    console.error("Submit button (submitBtn) not found");
 }
